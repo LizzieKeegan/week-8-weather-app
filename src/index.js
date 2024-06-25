@@ -44,18 +44,18 @@ function handleSearchSubmit(event) {
   let searchInput = document.querySelector("#search-form-input");
   searchCity(searchInput.value);
 }
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
 
-let searchFormElement = document.querySelector("#search-form");
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
 
-searchFormElement.addEventListener("submit", handleSearchSubmit);
-
-searchCity("London");
-
-let forecast = document.querySelector("#forecast");
-
-forecast.innerHTML = ` <div class="row">
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      ` <div class="row">
             <div class="col-2">
-              <div class="weather-forecast-day">Thu</div>
+              <div class="weather-forecast-day">${day}</div>
               <img
                 src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
                 alt=""
@@ -65,3 +65,12 @@ forecast.innerHTML = ` <div class="row">
               <span class="weather-forecast-temperature-min">12</span>
             </div>
           </div>`;
+  });
+  forecast.innerHTML = forecastHtml;
+}
+let searchFormElement = document.querySelector("#search-form");
+
+searchFormElement.addEventListener("submit", handleSearchSubmit);
+
+searchCity("London");
+displayForecast();

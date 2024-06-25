@@ -33,17 +33,18 @@ strong {
 .weather-forecast {
   margin-top: 20px;
   color: #000;
-  max-width: 150px;
+  max-width: 100%;
+  justify-content: space-around;
   align-items: center;
+  display: flex;
 }
 .row {
-  display: flex;
-
-  flex-direction: column;
+  justify-content: center;
 }
 .col-2 {
   text-align: center;
   margin: 0 auto;
+  max-width: 150px;
 }
 .weather-forecast-day {
   font-size: 16px;
@@ -82,8 +83,7 @@ strong {
   line-height: 25px;
   color: rgba(76, 61, 112, 0.559);
 }
-.weather-app-temp {
-}
+
 .search-form-input {
   background-color: rgba(176, 146, 179, 1);
   border: none;
