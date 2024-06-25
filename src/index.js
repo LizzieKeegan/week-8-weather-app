@@ -50,3 +50,18 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("London");
+
+let forecast = document.querySelector("#forecast");
+
+forecast.innerHTML = ` <div class="row">
+            <div class="col-2">
+              <div class="weather-forecast-day">Thu</div>
+              <img
+                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
+                alt=""
+                width="38"
+              />
+              <span class="weather-forecast-temperature-max">18</span>
+              <span class="weather-forecast-temperature-min">12</span>
+            </div>
+          </div>`;
