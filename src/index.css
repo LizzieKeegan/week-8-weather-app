@@ -34,20 +34,34 @@ strong {
   margin-top: 20px;
   color: #000;
   max-width: 100%;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   display: flex;
 }
 .row {
   justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .col-2 {
   text-align: center;
-  margin: 0 auto;
-  max-width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+.temperature-container {
+  text-align: center;
+}
+.weather-forecast-temperature-min,
+.weather-forecast-temperature-max {
+  display: inline-block;
+  margin-right: 5px;
 }
 .weather-forecast-day {
   font-size: 16px;
+  text-align: center;
 }
 .weather-forecast-temperature-min {
   opacity: 0.5;
@@ -61,10 +75,7 @@ strong {
   font-weight: bold;
 }
 .weather-app-icon {
-  font-size: 40px;
-  margin-top: 4px;
-  margin-left: 22px;
-  margin-right: 10px;
+  margin: 0 auto;
 }
 .weather-app-unit {
   margin-top: 15px;
