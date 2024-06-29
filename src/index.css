@@ -57,11 +57,16 @@ strong {
 .weather-forecast-temperature-min,
 .weather-forecast-temperature-max {
   display: inline-block;
-  margin-right: 5px;
 }
 .weather-forecast-day {
   font-size: 16px;
   text-align: center;
+}
+.weather-forecast-day,
+img {
+  width: 60px;
+  display: block;
+  margin: 0 auto;
 }
 .weather-forecast-temperature-min {
   opacity: 0.5;
