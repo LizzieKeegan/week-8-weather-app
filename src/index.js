@@ -37,61 +37,44 @@ function formatDate(date) {
 function searchCity(city) {
   let apiKey = "3bt55of44c88990a4f0ababb8d8f6206";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-
   axios.get(apiUrl).then(refreshWeather);
 }
 function handleSearchSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-form-input");
-  let city = searchInput.value;
-  searchCity(city);
+  searchCity(searchInput.value);
 }
 
 function getForecast(city) {
   let apiKey = "3bt55of44c88990a4f0ababb8d8f6206";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios(apiUrl).then(displayForecast);
-  console.log(apiUrl);
-}
-function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  return days[date.getDay()];
 }
 
 function displayForecast(response) {
+  let forecast = document.querySelector("#forecast");
+  console.log(response.data);
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
 
-  response.data.daily.forEach(function (day, index) {
-    if (index < 5) {
-      forecastHtml =
-        forecastHtml +
-        ` <div class="row">
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      ` <div class="row">
             <div class="col-2">
-              <div class="weather-forecast-day">${formatDay(day.time)}</div>
+              <div class="weather-forecast-day">${day}</div>
               <img
-                src="${day.condition.icon_url}"
+                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
                 alt=""
-                
+                width="38"
               />
              <div class="temperature-container"> 
-             <span class="weather-forecast-temperature-max" id="weather-forecast-temperature-max">${
-               day.temperature.maximum
-             }°</span>
-              <span class="weather-forecast-temperature-min" id="weather-forecast-temperature-min">${
-                day.temperature.minimum
-              }°</span>
+             <span class="weather-forecast-temperature-max">18</span>
+              <span class="weather-forecast-temperature-min">12</span>
               </div>
             </div>
           </div>`;
-    }
   });
-
-  let forecast = document.querySelector("#forecast");
-  console.log(response);
-  console.log(day.temperature.maximum);
-
   forecast.innerHTML = forecastHtml;
 }
 
@@ -100,4 +83,4 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("London");
-getForecast("London");
+getForecast("Paris");
